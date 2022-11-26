@@ -1,39 +1,66 @@
 function getComputerChoice() {
+    let result;
     let num = Math.floor(Math.random() * 3);
     if (num === 0) {
-        let result = "Rock";
+        result = 'Rock';
     } else if (num === 1) {
-        let result = "Paper";
+        result = 'Paper';
     } else if (num === 2) {
-        let result = "Scissors";
+        result = 'Scissors';
     }
     return result
 }
 
 function playRound(playerSelection, computerSelection) {
     let result;
-    playerSelection = toLowerCase(playerSelection);
-    switch (playerSelection) {
-        case "rock":
+    let playerSelectionLower = playerSelection.toLowerCase();
+    console.log(playerSelectionLower)
+    switch (playerSelectionLower) {
+        case 'rock':
             switch (computerSelection) {
-                case "Rock": result = "You Drew! Rock has no effect on Rock";
-                case "Paper": result = "You Lose! Paper beats Rock";
-                case "Scissors": result = "You Win! Rock beats Scissors";
+                case 'Rock': 
+                    result = 'You Drew! Rock has no effect on Rock';
+                    break;
+                case 'Paper': 
+                    result = 'You Lose! Paper beats Rock';
+                    break;
+                case 'Scissors': 
+                    result = 'You Win! Rock beats Scissors';
+                    break;
             }
-        case "paper":
+            break;
+        case 'paper':
             switch (computerSelection) {
-                case "Rock": result = "You Won! Paper beats Rock";
-                case "Paper": result = "You Drew! Paper has no effect on Paper";
-                case "Scissors": result = "You Lose! Scissors beats Paper";
+                case 'Rock': 
+                result = 'You Won! Paper beats Rock';
+                break;
+                case 'Paper': 
+                result = 'You Drew! Paper has no effect on Paper';
+                break;
+                case 'Scissors': 
+                result = 'You Lose! Scissors beats Paper';
+                break;
             }
-        case "scissors":
+            break;
+        case 'scissors':
             switch (computerSelection) {
-                case "Rock": result = "You Lose! Rock beats Scissors";
-                case "Paper": result = "You Won! Scissors beats Paper";
-                case "Scissors": result = "You Drew! Scissors has no effect on Scissors";
+                case 'Rock': 
+                result = 'You Lose! Rock beats Scissors';
+                break;
+                case 'Paper': 
+                result = 'You Won! Scissors beats Paper';
+                break;
+                case 'Scissors': 
+                result = 'You Drew! Scissors has no effect on Scissors';
+                break;
             }
+            break;
         default:
-            result = "Please enter a Rock, Paper or Scissors";
+            result = 'Please enter either Rock, Paper or Scissors';
     }
-    return Result;
+    return result;
 }
+
+let playerSelection = 'rock';
+const computerSelection = getComputerChoice();
+console.log(playRound(playerSelection, computerSelection));
