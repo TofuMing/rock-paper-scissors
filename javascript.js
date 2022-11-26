@@ -1,5 +1,5 @@
 function getComputerChoice() {
-    let result;
+    let result = "";
     let num = Math.floor(Math.random() * 3);
     if (num === 0) {
         result = 'Rock';
@@ -12,7 +12,7 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    let result;
+    let result = "";
     let playerSelectionLower = playerSelection.toLowerCase();
     console.log(playerSelectionLower)
     switch (playerSelectionLower) {
@@ -61,6 +61,26 @@ function playRound(playerSelection, computerSelection) {
     return result;
 }
 
-let playerSelection = 'rock';
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    let playerWin = 0;
+    let playerLoss = 0;
+    for (let i = 0; i < 5; i++) {
+        let playerInput = prompt('Please enter either Rock, Paper or Scissors');
+        let result = playRound(playerInput, getComputerChoice());
+        console.log(result);
+        if (result.includes("Drew") || result.includes("Please")) {
+            i--;
+        } else if (result.includes("Win")) {
+            playerWin++;
+        } else if (result.includes("Lose")) {
+            playerLoss++;
+        }
+    }
+    if (playerWin > playerLoss) {
+        console.log("Great Job! You Won")
+    } else {
+        console.log("You Suck! You Lost")
+    }
+}
+
+game();
